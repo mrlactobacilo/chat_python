@@ -47,7 +47,6 @@ def clientthread(conn, addr):
                     entrada = addr[0] + ' says: ' + entrada
                     conn.send(entrada)
                     sys.stdout.flush()
-                    sys.stdin.flush()
                     continue
             except Exception as e:
                 print(e)
@@ -79,7 +78,7 @@ while True:
     print(addr[0] + " connected")
     # maintains a list of clients for ease of broadcasting a message to all available people in the chatroom
     # Prints the address of the person who just connected
-    threading.Thread(clientthread(conn,addr))
+    threading.Thread(clientthread(conn, addr))
     # creates and individual thread for every user that connects
 
 conn.close()
