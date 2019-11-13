@@ -24,13 +24,13 @@ ip = str(sys.stdin.readline())
 print "Digite a porta desejada"
 port = int(sys.stdin.readline())
 
-try
+try:
     while 1:
         try:
             msg, amigo = server.recvfrom(2048)
             msg = msg.decode('utf-8').rstrip()
             print "{}: {}".format(amigo[0], msg)
-        except
+        except:
             pass
         try:
             entrada = mensagem()
@@ -39,7 +39,7 @@ try
         except KeyboardInterrupt:
             sys.exit("\nChat encerrado!")
     server.close()
-except Exception as e
+except Exception as e:
     print "O erro foi {}".format(erro)
     server.close
 ''' 
