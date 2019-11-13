@@ -32,6 +32,7 @@ def client_thread(conn, addr):
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server.setblocking(10)
 
 print('Digite o endereço IP da máquina que deseja se conectar:\n')
 ip = str(sys.stdin.readline())
@@ -46,6 +47,7 @@ if err == 0:
     threading.Thread(client_thread(server,ip))
     server.close()
 else:
+    print(get_ip_address())
     server.bind((get_ip_address(), port))
     server.listen(1)
 
