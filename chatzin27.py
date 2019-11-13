@@ -13,7 +13,7 @@ def get_ip_address():
 def client_thread(conn, addr):
     while True:
         try:
-            sockets_list = [sys.stdin, server]
+            sockets_list = [sys.stdin, conn]
             read_sockets, write_socket, error_socket = select.select(sockets_list, [], [])
             for socks in read_sockets:
                 if socks == conn:
