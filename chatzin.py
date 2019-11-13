@@ -31,6 +31,7 @@ def clientthread(conn, addr):
                 message = conn.recv(2048)
                 if message:
                     print(addr[0] + " says: " + message)
+                    continue
                     # message_to_send = "<" + addr[0] + "> " + message
                     # broadcast(message_to_send, conn)
                     # prints the message and address of the user who just sent the message on the server terminal
@@ -47,6 +48,7 @@ def clientthread(conn, addr):
                     conn.send(entrada)
                     sys.stdout.flush()
                     sys.stdin.flush()
+                    continue
             except Exception as e:
                 print(e)
                 break

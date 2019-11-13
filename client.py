@@ -23,4 +23,5 @@ while True:
             server.send(message)
             sys.stdin.flush()
             sys.stdout.flush()
+            continue
 server.close()
