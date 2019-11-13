@@ -22,7 +22,7 @@ as mensagens recebidas
 '''
 def clientthread(conn, addr):
     # enviando uma mensagem de boas vindas ao usuário que se conectou
-    conn.send("Welcome to this chatroom!")
+    conn.send('Welcome to this chatroom!')
 
     while True:
             try:
@@ -36,7 +36,7 @@ def clientthread(conn, addr):
                     message_to_send = "<" + addr[0] + "> " + message
 
                     # e por fim a mesma é re-transmitida para todos os usuários conectados no server
-                    broadcast(message_to_send,conn)
+                    broadcast(message_to_send, conn)
                 else:
                     # Se a mensagem for nula, o que corresponde a uma conexão instável, remove-se a conexão do server
                     remove(conn)
