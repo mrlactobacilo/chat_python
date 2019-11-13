@@ -26,12 +26,13 @@ def client_thread(conn, addr):
                     sys.stdout.write(message)
                     sys.stdout.flush()
         except:
-            print "Error"
-            continue
+            print sys.exc_info()
+            break
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server.settimeout(10)
 
 print "Digite o IP"
 ip = str(sys.stdin.readline())
@@ -43,9 +44,10 @@ err = server.connect_ex((ip, port))
 
 if err == 0:
     print "Conexao bem sucedida..."
-    threading.Thread(client_thread(server,ip))
+    client_thread(server,ip)
     server.close()
 else:
+    print get_ip_address()
     server.bind((get_ip_address(), port))
     server.listen(1)
 
@@ -56,7 +58,7 @@ else:
 
         print addr[0] + " se conectou a sua maquina"
 
-        threading.Thread(client_thread(conn, addr))
+        client_thread(conn, addr)
 
     conn.close()
     server.close()
