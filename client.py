@@ -41,7 +41,7 @@ while True:
             print(message)
         else:
             message = sys.stdin.readline()
-            conn.send(message).encode(encoding='utf_8', errors='strict')
+            conn.send(message.encode(encoding='utf_8', errors='strict'))
             sys.stdout.write("<You>")
             sys.stdout.write(message)
             sys.stdout.flush()
