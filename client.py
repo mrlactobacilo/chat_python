@@ -18,6 +18,7 @@ while True:
             message = socks.recv(2048)
             print(message)
         else:
+            print('You says: ')
             message = sys.stdin.readline()
             server.send(message)
             sys.stdin.flush()

@@ -30,20 +30,23 @@ def clientthread(conn, addr):
             try:
                 message = conn.recv(2048)
                 if message:
-                    print("<" + addr[0] + "> " + message)
-                    message_to_send = "<" + addr[0] + "> " + message
-                    broadcast(message_to_send, conn)
+                    print(addr[0] + " says: " + message)
+                    # message_to_send = "<" + addr[0] + "> " + message
+                    # broadcast(message_to_send, conn)
                     # prints the message and address of the user who just sent the message on the server terminal
                 else:
-                    remove(conn)
+                    print('Error')
             except Exception as e:
                 print(e)
                 break
             try:
                 if select.select([sys.stdin,], [], [])[0]:
+                    print('You says: ')
                     entrada = sys.stdin.readline()
+                    entrada = addr[0] + ' says: ' + entrada
                     conn.send(entrada)
                     sys.stdout.flush()
+                    sys.stdin.flush()
             except Exception as e:
                 print(e)
                 break
