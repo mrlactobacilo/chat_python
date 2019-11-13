@@ -22,12 +22,12 @@ as mensagens recebidas
 '''
 def clientthread(conn, addr):
     # enviando uma mensagem de boas vindas ao usuário que se conectou
-    conn.send('Welcome to this chatroom!')
+    conn.send('Welcome to this chatroom!'.encode(encoding='utf_8', errors='strict'))
 
     while True:
             try:
                 # Fica "ouvindo" a conexão conn à espera de pacotes enviados por ela
-                message = conn.recv(2048)
+                message = conn.recv(2048).decode(encoding='utf_8', errors='strict')
                 if message:
                     # Se um pacote for recebido, e a mensagem não for nula, a mesma será impressa na tela
                     print("<" + addr[0] + "> " + message)
@@ -52,7 +52,7 @@ def broadcast(message,connection):
     for client in clients:
         if client != connection:
             try:
-                client.send(message)
+                client.send(message.encode(encoding='utf_8', errors='strict'))
             except:
                 client.close()
                 remove(client)

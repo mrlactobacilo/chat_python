@@ -37,11 +37,11 @@ while True:
     read_sockets, write_socket, error_socket = select.select(sockets_list, [], [])
     for socks in read_sockets:
         if socks == conn:
-            message = socks.recv(2048)
+            message = socks.recv(2048).decode(encoding='utf_8', errors='strict')
             print(message)
         else:
             message = sys.stdin.readline()
-            conn.send(message)
+            conn.send(message).encode(encoding='utf_8', errors='strict')
             sys.stdout.write("<You>")
             sys.stdout.write(message)
             sys.stdout.flush()
