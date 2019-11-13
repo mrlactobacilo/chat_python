@@ -1,3 +1,8 @@
+'''
+Client python
+Este código deve ser iniciado para conectar-se ao server já iniciado
+'''
+
 import socket
 import select
 import sys
