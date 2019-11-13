@@ -22,4 +22,5 @@ while True:
             message = sys.stdin.readline()
             server.send(message)
             sys.stdin.flush()
+            sys.stdout.flush()
 server.close()
