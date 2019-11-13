@@ -91,7 +91,7 @@ clients=[]
 
 while True:
     print("IP do server: " + IP_address)
-    print("Porta do server: " + Port)
+    print("Porta do server: " + str(Port))
     print("Aguardando conexões...")
 
     # Aceitando uma conexão. São retornados 2 parâmetros:
