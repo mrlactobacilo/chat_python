@@ -28,26 +28,18 @@ def clientthread(conn, addr):
     # sends a message to the client whose user object is conn
     while True:
             try:
-                message = conn.recv(2048)
-                if message:
-                    print(addr[0] + " says: " + message)
-                    continue
-                    # message_to_send = "<" + addr[0] + "> " + message
-                    # broadcast(message_to_send, conn)
-                    # prints the message and address of the user who just sent the message on the server terminal
-                else:
-                    print('Error')
-            except Exception as e:
-                print(e)
-                break
-            try:
-                if select.select([sys.stdin,], [], [])[0]:
-                    print('You says: ')
-                    entrada = sys.stdin.readline()
-                    entrada = addr[0] + ' says: ' + entrada
-                    conn.send(entrada)
-                    sys.stdout.flush()
-                    continue
+                sockets_list = [sys.stdin, conn]
+                read_sockets, write_socket, error_socket = select.select(sockets_list, [], [])
+                for socks in read_sockets:
+                    if socks == server:
+                        message = socks.recv(2048)
+                        print(message)
+                    else:
+                        message = sys.stdin.readline()
+                        message = addr[0] + ' says: ' + message
+                        server.send(message)
+                        sys.stdin.flush()
+                        sys.stdout.flush()
             except Exception as e:
                 print(e)
                 break
