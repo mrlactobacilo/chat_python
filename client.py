@@ -11,7 +11,6 @@ import sys
 # AF_INET : define a família de IP que será utilizado (AF_ de Address Family)
 # SOCK_STREAM : define o tipo de conexão do socket, sendo este utilizado para TCP e SOCK_DGRAM para uma conexão UDP
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-conn.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 if len(sys.argv) != 3:
     print("Por favor, digite após o nome do script o IP e a porta desejada, ambos separados por um espaço.")

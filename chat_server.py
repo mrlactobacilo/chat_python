@@ -75,17 +75,17 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Isso pode ser útil ao reiniciarmos o server e o socket continuar ativo.
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-if len(sys.argv) != 2:
-    print("Por favor, digite após o nome do script a porta desejada!")
+if len(sys.argv) != 3:
+    print("Por favor, digite após o nome do script o IP e a porta desejada, ambos separados por um espaço.")
     exit()
-IP_address = str(get_ip_address())
-Port = int(sys.argv[1])
+IP_address = str(sys.argv[1])
+Port = int(sys.argv[2])
 
 # Vinculando o socket server a porta especificada. O lado client deve estar ciente desses valores
 server.bind((IP_address, Port))
 
 # Permitindo até 10 conexões
-server.listen(10)
+server.listen(100)
 
 clients=[]
 
