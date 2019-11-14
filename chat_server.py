@@ -90,10 +90,11 @@ server.listen(100)
 
 clients=[]
 
+print("IP do server: " + IP_address)
+print("Porta do server: " + str(Port))
+
 while True:
-    print("IP do server: " + IP_address)
-    print("Porta do server: " + str(Port))
-    print("Aguardando conexões...")
+    print("\nAguardando conexões...")
 
     # Aceitando uma conexao. São retornados 2 parametros:
     # conn: objeto socket para a conexão do usuário que acabou de conectar
