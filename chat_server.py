@@ -107,7 +107,8 @@ while True:
     print(addr[0] + " conectou-se ao server")
 
     # Cria uma thread individual para cada novo usuário conectado
-    threading.Thread(clientthread(conn, addr)).start()
+    t = threading.Thread(target=clientthread, args=(conn, addr,))
+    t.start()
 
 conn.close()
 server.close()
