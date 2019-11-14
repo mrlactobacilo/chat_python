@@ -6,7 +6,7 @@ broadcast todas as mensagens enviadas pelos usuarios conectados
 '''
 
 import socket
-import threading
+from thread import *
 import sys
 
 '''
@@ -107,7 +107,7 @@ while True:
     print(addr[0] + " conectou-se ao server")
 
     # Cria uma thread individual para cada novo usuario conectado
-    threading.Thread(clientthread(conn, addr))
+    start_new_thread(clientthread(conn,addr))
 
 conn.close()
 server.close()
