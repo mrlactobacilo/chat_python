@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Server python
 Este código deve ser executado para iniciar o server, que ficará esperando por conxões e retransmitirá em
@@ -94,7 +95,7 @@ while True:
     print("Porta do server: " + str(Port))
     print("Aguardando conexões...")
 
-    # Aceitando uma conexão. São retornados 2 parâmetros:
+    # Aceitando uma conexao. São retornados 2 parametros:
     # conn: objeto socket para a conexão do usuário que acabou de conectar
     # addr: endereço IP do usuário que acabou de conectar
     conn, addr = server.accept()

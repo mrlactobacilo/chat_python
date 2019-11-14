@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Client python
 Este codigo deve ser iniciado para conectar-se ao server ja iniciado

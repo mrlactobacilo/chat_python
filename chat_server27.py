@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Server python
 Este codigo deve ser executado para iniciar o server, que ficara esperando por conexoes e retransmitira em
