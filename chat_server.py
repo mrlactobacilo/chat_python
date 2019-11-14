@@ -80,7 +80,7 @@ if len(sys.argv) != 2:
     print("Por favor, digite após o nome do script a porta desejada, ambos separados por um espaço.")
     exit()
 IP_address = str(get_ip_address())
-Port = int(sys.argv[2])
+Port = int(sys.argv[1])
 
 # Vinculando o socket server a porta especificada. O lado client deve estar ciente desses valores
 server.bind((IP_address, Port))
