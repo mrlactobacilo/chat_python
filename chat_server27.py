@@ -6,7 +6,7 @@ broadcast todas as mensagens enviadas pelos usuarios conectados
 '''
 
 import socket
-from thread import *
+import threading
 import sys
 
 '''
@@ -41,7 +41,8 @@ def clientthread(conn, addr):
                 else:
                     # Se a mensagem for nula, o que corresponde a uma conexao instavel, remove-se a conexao do server
                     remove(conn)
-            except:
+            except Exception as e:
+                print(e)
                 continue
 
 
@@ -85,7 +86,7 @@ Port = int(sys.argv[2])
 # Vinculando o socket server a porta especificada. O lado cliente deve estar ciente desses valores
 server.bind((IP_address, Port))
 
-# Permitindo ate 10 conexoes
+# Permitindo ate 100 conexoes
 server.listen(100)
 
 clients=[]
@@ -107,7 +108,7 @@ while True:
     print(addr[0] + " conectou-se ao server")
 
     # Cria uma thread individual para cada novo usuario conectado
-    start_new_thread(clientthread(conn,addr))
+    threading.Thread(clientthread,(conn, addr))
 
 conn.close()
 server.close()
