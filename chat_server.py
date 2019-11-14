@@ -23,7 +23,7 @@ as mensagens recebidas
 '''
 def clientthread(conn, addr):
     # enviando uma mensagem de boas vindas ao usuário que se conectou
-    conn.send('Welcome to this chatroom!'.encode(encoding='utf_8', errors='strict'))
+    conn.send('Bem vindo ao bate-papo!'.encode(encoding='utf_8', errors='strict'))
 
     while True:
             try:
