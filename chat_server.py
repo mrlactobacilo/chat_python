@@ -31,13 +31,10 @@ def clientthread(conn, addr):
                 message = conn.recv(2048).decode(encoding='utf_8', errors='strict')
                 if message:
                     # Se um pacote for recebido, e a mensagem não for nula, a mesma será impressa na tela
-                    print("<" + addr[0] + "> " + message)
-
-                    # em seguida será adicionado o endereço do usuário que a enviou
-                    message_to_send = "<" + addr[0] + "> " + message
+                    print(message)
 
                     # e por fim a mesma é re-transmitida para todos os usuários conectados no server
-                    broadcast(message_to_send, conn)
+                    broadcast(message, conn)
                 else:
                     # Se a mensagem for nula, o que corresponde a uma conexão instável, remove-se a conexão do server
                     remove(conn)

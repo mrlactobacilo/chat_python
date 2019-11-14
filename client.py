@@ -13,15 +13,18 @@ import sys
 # SOCK_STREAM : define o tipo de conexão do socket, sendo este utilizado para TCP e SOCK_DGRAM para uma conexão UDP
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-if len(sys.argv) != 3:
-    print("Por favor, digite após o nome do script o IP e a porta desejada, ambos separados por um espaço.")
-    exit()
-IP_address = str(sys.argv[1])
-Port = int(sys.argv[2])
+print("Digite o IP do server: ")
+IP_address = str(sys.stdin.readline())
+print("Digite a porta do server: ")
+Port = int(sys.stdin.readline())
 
 # Conectando-se ao server
+print("Conectando-se ao server...")
 conn.connect((IP_address, Port))
+print("Conexão estabelecida com sucesso!")
 
+print("Digite seu nome de usuário")
+username = sys.stdin.readline()
 '''
 Fazendo uso da biblioteca select, monitoramos dois buffers de leitura: 
     stdin: entrada padrão do sistema (teclado)
@@ -41,9 +44,10 @@ while True:
             message = socks.recv(2048).decode(encoding='utf_8', errors='strict')
             print(message)
         else:
-            message = sys.stdin.readline()
+            entrada = sys.stdin.readline()
+            message = username + " says: " + entrada
             conn.send(message.encode(encoding='utf_8', errors='strict'))
             sys.stdout.write("<You>")
-            sys.stdout.write(message)
+            sys.stdout.write(entrada)
             sys.stdout.flush()
 server.close()
