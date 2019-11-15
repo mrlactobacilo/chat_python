@@ -45,9 +45,9 @@ while True:
             print(message)
         else:
             entrada = sys.stdin.readline()
-            message = username + " says: " + entrada
+            message = username + " disse: " + entrada
             conn.send(message.encode(encoding='utf_8', errors='strict'))
-            sys.stdout.write("<You>")
+            sys.stdout.write("<Você>")
             sys.stdout.write(entrada)
             sys.stdout.flush()
 server.close()
